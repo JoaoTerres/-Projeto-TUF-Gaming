@@ -15,7 +15,7 @@ try {
 }
 
 if ($statement->execute() === false){
-    header('Location: /register.php?sucesso=0');
+    header('Location: /register.html?sucesso=0');
 }else{
-    header('Location: /home.php?sucesso=1');
+    header('Location: /home.html?sucesso=1');
 }

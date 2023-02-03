@@ -1,18 +1,36 @@
 <!DOCTYPE html>
 <html>
-<a href="home.html">Voltar</a>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>TUF GAMING</title>
+
+    <link rel="stylesheet" href="./css/register.css">
+    <link rel="stylesheet" href="./css/header.css">
+</head>
 <body>
-    <form action="savedata.php" method="POST">
-        
-        <input type="text" name="name" id="name" placeholder="Nome" required>
-        
-        <input type="email" name="email" id="email" placeholder="Email" required>
-        
-        <input type="tel" name="number" id="number" placeholder="Telefone" required>
-        
-        <input type="password" name="password" id="password" placeholder="Senha" required>
-        
-        <input type="submit" name="submit" id="submit">
-    </form>
+    <header>
+        <div class="box">
+            <h1><img class="img" src="./img/fox.png" alt="Logo TUF GAMING"></h1>
+            <nav>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="login.php">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <form action="savedata.php" method="POST">
+            <h2>CRIAR CONTA</h2>
+            <input type="text" name="name" id="name" placeholder="Nome" required>
+            <input type="email" name="email" id="email" placeholder="Email" required>
+            <input type="tel" name="number" id="number" placeholder="Telefone" required>
+            <input type="password" name="password" id="password" placeholder="Senha" required>
+            <input class="inputSubmit" type="submit" name="submit" id="submit">
+        </form>
+    </main>
 </body>
+
 </html>
