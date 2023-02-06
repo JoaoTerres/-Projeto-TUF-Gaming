@@ -1,9 +1,6 @@
 <?php
-session_start();
 
-// Conexão com o banco de dados
-$dbPatch = __DIR__ . '/sql.sqlite';
-$pdo = new PDO("sqlite:$dbPatch");
+include_once 'database.php';
 
 // Verifica se o ID foi enviado via POST
 if (isset($_POST['id'])) {

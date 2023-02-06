@@ -1,8 +1,6 @@
 <?php
-session_start();
 
-$dbPatch = __DIR__ . '/sql.sqlite';
-$pdo = new PDO("sqlite:$dbPatch");
+include_once 'config.php';
 
 //Verifica se não tem campo vazio.
 if (isset($_POST['submit'])) {
@@ -10,23 +8,16 @@ if (isset($_POST['submit'])) {
         header('Location: login.html?error=empty_fields');
         exit;
     }
-    //consulta e verificação usuário banco de dados.
-    try { 
-        $sql = 'SELECT * FROM register WHERE email = ? AND password = ?;';
-        $statement = $pdo->prepare($sql);
-        $statement->bindValue(1, $_POST['email']);
-        $statement->bindValue(2, $_POST['password']);
-        $statement->execute();
+    
+    $usuario = new Register;
+    $usuario->email = $_POST['email'];
+    $usuario->password = $_POST['password'];
 
-        $usuario = $statement->fetch(PDO::FETCH_ASSOC);
-    } catch (\Exception $e) {
-        $usuario = [];
-        var_dump($e->getMessage());
-    }
     //Se for encontrado armazena na sessão e redireciona. Caso contrario limpa sessão e redireciona.    
-    if ($usuario) {
-        $_SESSION['email'] = $_POST['email'];
-        $_SESSION['password'] = $_POST['password'];
+    if ($usuario->login($pdo)) {
+        $_SESSION['role'] = $usuario->role;
+        $_SESSION['email'] = $usuario->email;
+        $_SESSION['password'] = $usuario->password;
         header('Location: control.php');
         exit;
     } else {
