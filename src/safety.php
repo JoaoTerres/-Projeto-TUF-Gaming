@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
     } else {
         unset($_SESSION['email']);
         unset($_SESSION['password']);
-        header('Location: login.html?error=invalid_credentials');
+        header('Location: login.php?error=invalid_credentials');
         exit;
     }
 } else {
