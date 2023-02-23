@@ -14,6 +14,7 @@ if ((!isset($_SESSION['email']) || !isset($_SESSION['password']))) {
   exit;
 }
 $logado = $_SESSION['email'];
+
 ?><!DOCTYPE html>
 <html>
    <head>
@@ -22,7 +23,6 @@ $logado = $_SESSION['email'];
       <title>TUF GAMING</title>
       <link rel="stylesheet" href="./css/control.css">
       <link rel="stylesheet" href="./css/header.css">
-      <script src="logout.js"></script>
    </head>
    <body>
       <header>
@@ -35,6 +35,7 @@ $logado = $_SESSION['email'];
                <ul>
                   <li><a href="home.html">Home</a></li>
                   <li><a href="register.html">Cadastre-se</a></li>
+                  <li><a href="logout.php">Sair</a></li>
                </ul>
             </nav>
          </div>
@@ -53,9 +54,9 @@ $logado = $_SESSION['email'];
                <td><?php echo $register['email'];?></td>
                <td><?php echo $register['number'];?></td>
                <td>
-                  <form action="delete.php" method="post">
+                  <form action="UserActions.php" method="post">
                       <input type="hidden" name="id" value="<?php echo $register['id']; ?>">
-                      <input type="submit" value="Excluir">
+                      <input type="submit" value="Excluir" name="delete-user">
                   </form>
                </td>
             </tr>
